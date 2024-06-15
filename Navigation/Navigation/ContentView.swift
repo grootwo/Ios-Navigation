@@ -7,15 +7,26 @@
 
 import SwiftUI
 
+struct NavigationView: View {
+    let number: Int
+    var body: some View {
+        Text("\(number) NavigationView")
+    }
+    init(number: Int) {
+        self.number = number
+        print("\(number) NavigationView created")
+    }
+}
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            List(1..<51) { num in
+                NavigationLink("\(num) NavigationView") {
+                    NavigationView(number: num)
+                }
+            }
         }
-        .padding()
     }
 }
 

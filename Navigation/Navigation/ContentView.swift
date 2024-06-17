@@ -30,6 +30,14 @@ struct ContentView: View {
             .navigationDestination(for: String.self) { selection in
                 Text("string \(selection)")
             }
+            .toolbar {
+                Button("Push path 200") {
+                    path.append(200)
+                }
+                Button("Push path 50") {
+                    path.append(50)
+                }
+            }
         }
     }
 }

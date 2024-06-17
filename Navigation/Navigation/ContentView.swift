@@ -13,16 +13,22 @@ struct Person: Hashable {
 }
 
 struct ContentView: View {
+    @State private var path = [Int]()
     var body: some View {
-        NavigationStack {
-            List(1..<51) { num in
-                NavigationLink("\(num)", value: num)
-                    .navigationDestination(for: Int.self, destination: { selection in
-                        Text("You selected \(selection)")
-                    })
-                    .navigationDestination(for: Person.self, destination: { person in
-                        Text("You selected \(person)")
-                    })
+        NavigationStack(path: $path) {
+            VStack {
+                Button("go to 10") {
+                    path = [10]
+                }
+                Button("go to 100") {
+                    path.append(100)
+                }
+                Button("go to 30 and 10, 100") {
+                    path = [30, 10, 100]
+                }
+            }
+            .navigationDestination(for: Int.self) { selection in
+                Text("This is \(selection)")
             }
         }
     }

@@ -13,6 +13,11 @@ struct NavigationView: View {
     var body: some View {
         NavigationLink("Going to random NavigationView", value: Int.random(in: 0...1000))
             .navigationTitle("number \(num)")
+            .toolbar {
+                Button("Going home") {
+                    path = NavigationPath()
+                }
+            }
     }
 }
 

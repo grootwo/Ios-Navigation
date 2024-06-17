@@ -13,22 +13,22 @@ struct Person: Hashable {
 }
 
 struct ContentView: View {
-    @State private var path = [Int]()
+    @State private var path = NavigationPath()
     var body: some View {
         NavigationStack(path: $path) {
-            VStack {
-                Button("go to 10") {
-                    path = [10]
+            List {
+                ForEach(1..<6) { i in
+                    NavigationLink("number: \(i)", value: i)
                 }
-                Button("go to 100") {
-                    path.append(100)
-                }
-                Button("go to 30 and 10, 100") {
-                    path = [30, 10, 100]
+                ForEach(1..<6) { i in
+                    NavigationLink("string: \(i)", value: String(i))
                 }
             }
             .navigationDestination(for: Int.self) { selection in
-                Text("This is \(selection)")
+                Text("number \(selection)")
+            }
+            .navigationDestination(for: String.self) { selection in
+                Text("string \(selection)")
             }
         }
     }

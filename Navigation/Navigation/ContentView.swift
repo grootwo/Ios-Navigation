@@ -8,18 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {  
+    var body: some View {
         NavigationStack {
-            List(1..<100) { i in
-                NavigationLink("\(i)") {
-                    Text("\(i) view")
+            Text("This is Text")
+                .toolbar {
+                    ToolbarItemGroup(placement: .confirmationAction) {
+                        Button("Confirm Button") {}
+                        Button("Confirm Button") {}
+                    }
                 }
-            }
-            .navigationTitle("Navigation Title")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(.indigo, for: .navigationBar)
-            .toolbarColorScheme(.dark)
-            .toolbar(.hidden, for: .navigationBar)
         }
     }
 }

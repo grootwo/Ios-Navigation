@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var navigationTitle = "Temporary title"
     var body: some View {
         NavigationStack {
             Text("This is Text")
-                .toolbar {
-                    ToolbarItemGroup(placement: .confirmationAction) {
-                        Button("Confirm Button") {}
-                        Button("Confirm Button") {}
-                    }
-                }
+                .navigationTitle($navigationTitle)
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
